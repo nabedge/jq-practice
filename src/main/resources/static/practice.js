@@ -81,7 +81,8 @@ jQuery(document).ready(function () { //$(document).ready( function(){ とかい�
                 $('#books').append(li);
             });
         });
-    }
+    };
+
     $("#createLi").click(function(){
         createLi();
     });
