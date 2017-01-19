@@ -70,9 +70,27 @@ jQuery(document).ready(function () { //$(document).ready( function(){ とかい�
     // });
 
     // 課題6
-    // 全てのbookのtitleを、console.logではなく、<li>タグを使って表現する
+    // 全てのbookのtitleを、console.logではなく、<li>タグを使ってブラウザ上に表示する
     // 専用の関数と専用のボタンをつくって、そのボタンを押したら<li>タグが表示されるようにすること。
-    // ヒント たとえば $("<a></a>") で新規のDOM要素をつくれる
+    // ヒント たとえば $("<a></a>") で新規のDOM要素をつくれる. "DOM要素変数名.html(タグに書きたいこと);" で要素内部に書き込める
+    // var createLi = function() {
+    //     $.getJSON("/api/books", function(json){
+    //         jQuery.each(json, function() {
+    //             var li = $("<li></li>");
+    //             li.html(this.isbn);
+    //             $('#books').append(li);
+    //         });
+    //     });
+    // };
+    //
+    // $("#createLi").click(function(){
+    //     createLi();
+    // });
+
+    // 課題7
+    // 課題6で表示できるようになったliタグの背景色を1行ずつ変えて表示する。例えば白,青,白,青...のように。
+    // ヒント: jQueryのセレクタには "odd" "even" という便利なやつがある.
+    // ヒント: jQueryのDOM要素は .addClass(cssクラス名)というメソッドを持っているのでclass名の追加はこれでOK. cssで任意のclass名に背景色を指定する
     var createLi = function() {
         $.getJSON("/api/books", function(json){
             jQuery.each(json, function() {
@@ -80,12 +98,13 @@ jQuery(document).ready(function () { //$(document).ready( function(){ とかい�
                 li.html(this.isbn);
                 $('#books').append(li);
             });
+            $('#books li:even').addClass('bg_blue');
+            //$('li:odd').addClass('bg_blue');
         });
     };
 
     $("#createLi").click(function(){
         createLi();
     });
-
 
 });
